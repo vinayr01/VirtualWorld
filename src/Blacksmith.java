@@ -2,7 +2,7 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public class Blacksmith implements EntityAnimation {
+public class Blacksmith implements Entity {
     private String id;
     private Point position;
     private List<PImage> images;
@@ -10,7 +10,7 @@ public class Blacksmith implements EntityAnimation {
     //private int resourceLimit;
     //private int resourceCount;
     //private int actionPeriod;
-    private int animationPeriod;
+    //private int animationPeriod;
 
     public Blacksmith(String id, Point position,
                                           List<PImage> images)
@@ -22,7 +22,7 @@ public class Blacksmith implements EntityAnimation {
         //this.resourceLimit = 0;
         //this.resourceCount = 0;
         //this.actionPeriod = 0;
-        this.animationPeriod = 0;
+        //this.animationPeriod = 0;
     }
 
     public String getId()
@@ -55,10 +55,10 @@ public class Blacksmith implements EntityAnimation {
         return actionPeriod;
     }*/
 
-    public int getAnimationPeriod()
+    /*public int getAnimationPeriod()
     {
         return animationPeriod;
-    }
+    }*/
 
     public void nextImage()
     {
