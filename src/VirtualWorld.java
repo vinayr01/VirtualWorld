@@ -401,8 +401,7 @@ public final class VirtualWorld
          Point pt = new Point(Integer.parseInt(properties[ORE_COL]),
                  Integer.parseInt(properties[ORE_ROW]));
          Ore entity = new Ore(properties[ORE_ID],
-                 pt, Integer.parseInt(properties[ORE_ACTION_PERIOD]),
-                 imageStore.getImageList(ORE_KEY));
+                 pt, imageStore.getImageList(ORE_KEY), Integer.parseInt(properties[ORE_ACTION_PERIOD]));
          world.tryAddEntity(entity);
       }
 

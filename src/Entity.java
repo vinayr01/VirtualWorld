@@ -1,23 +1,53 @@
 import java.util.List;
 import processing.core.PImage;
 
-public interface Entity
+public abstract class Entity
 {
+   protected String id;
+   protected Point position;
+   protected List<PImage> images;
+   protected int imageIndex;
 
    /*public EntityKind getKind()
    {
       return kind;
    }*/
 
-   public String getId();
+   public Entity(String id, Point position, List<PImage> images)
+   {
+      this.id = id;
+      this.position = position;
+      this.images = images;
+      imageIndex = 0;
+   }
 
-   public Point getPosition();
+   public String getId()
+   {
+      return id;
+   }
 
-   public List<PImage> getImages();
+   public Point getPosition()
+   {
+      return position;
+   }
 
-   public int getImageIndex();
+   public void setPosition(Point pos)
+   {
+      position = pos;
+   }
 
-   public void setPosition(Point pos);
+   public List<PImage> getImages()
+   {
+      return images;
+   }
 
-   public void nextImage();
+   public int getImageIndex()
+   {
+      return imageIndex;
+   }
+
+   public void nextImage()
+   {
+      imageIndex = (imageIndex + 1) % images.size();
+   }
 }

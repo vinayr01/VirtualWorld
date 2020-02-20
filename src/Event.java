@@ -102,11 +102,11 @@ final class Event
          executeVeinActivity((Vein) action.getEntity(), action.getWorld(), action.getImageStore(),
                  scheduler);
       }
-      else if (action.getEntity() instanceof Blacksmith)
+      else if (((Action)action).getEntity() instanceof Blacksmith)
       {
          throw new UnsupportedOperationException("executeActivityAction not supported for Blacksmith");
       }
-      else if (action.getEntity() instanceof Obstacle)
+      else if (((Action)action).getEntity() instanceof Obstacle)
       {
          throw new UnsupportedOperationException("executeActivityAction not supported for Obstacle");
       }
@@ -156,10 +156,10 @@ final class Event
       scheduler.unscheduleAllEvents(entity);
 
       OreBlob blob = new OreBlob(entity.getId() + BLOB_ID_SUFFIX,
-              pos, ((OreBlob) entity).getActionPeriod() / BLOB_PERIOD_SCALE,
+              pos, imageStore.getImageList(BLOB_KEY), ((OreBlob) entity).getActionPeriod() / BLOB_PERIOD_SCALE,
               BLOB_ANIMATION_MIN +
-                      rand.nextInt(BLOB_ANIMATION_MAX - BLOB_ANIMATION_MIN),
-              imageStore.getImageList(BLOB_KEY));
+                      rand.nextInt(BLOB_ANIMATION_MAX - BLOB_ANIMATION_MIN)
+              );
 
       world.addEntity(blob);
       scheduler.scheduleActions(blob, world, imageStore);
@@ -206,9 +206,8 @@ final class Event
       if (openPt.isPresent())
       {
          Ore ore = new Ore(ORE_ID_PREFIX + entity.getId(),
-                 openPt.get(), ORE_CORRUPT_MIN +
-                         rand.nextInt(ORE_CORRUPT_MAX - ORE_CORRUPT_MIN),
-                 imageStore.getImageList(VirtualWorld.ORE_KEY));
+                 openPt.get(), imageStore.getImageList(VirtualWorld.ORE_KEY), ORE_CORRUPT_MIN +
+                         rand.nextInt(ORE_CORRUPT_MAX - ORE_CORRUPT_MIN));
          world.addEntity(ore);
          scheduler.scheduleActions(ore, world, imageStore);
       }

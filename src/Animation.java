@@ -1,24 +1,14 @@
-public class Animation implements Action {
+public class Animation extends Action {
     private EntityAnimation entity;
-    private WorldModel world;
-    private ImageStore imageStore;
-    private int repeatCount;
 
     public Animation(EntityAnimation entity, int repeatCount)
     {
+        super(repeatCount);
         this.entity = entity;
-        //this.world = null;
-        //this.imageStore = null;
-        this.repeatCount = repeatCount;
     }
 
     public EntityAnimation getEntity()
     {
         return entity;
-    }
-
-    public int getRepeatCount()
-    {
-        return repeatCount;
     }
 }
